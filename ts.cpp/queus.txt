@@ -1,0 +1,34 @@
+Đặc trưng	queue	stack
+Quy tắc	F I F O – First In First Out (vào trước ra trước)	L I F O – Last In First Out (vào sau ra trước)
+Thêm phần tử	push(x) → cuối hàng	push(x) → đỉnh (trên cùng)
+Lấy/xóa phần tử	pop() → xóa front (đầu)	pop() → xóa top (đỉnh)
+Lấy nhưng không xóa	front() / back()	top()
+Duyệt ngẫu nhiên	Không hỗ trợ chỉ số	Không hỗ trợ chỉ số
+Ứng dụng điển hình	Hàng chờ, BFS, hệ điều hành lập lịch tiến trình…	Gọi hàm lồng nhau, DFS, undo/redo, biểu thức toán…
+
+#include<iostream>
+#include<queue>
+
+using namespace std;
+
+int main(){
+    queue<int> q;
+    int n, k, temp;
+    cin >> n;
+    for (int i = 0; i < n; i++){
+    	cin >> temp;
+    	q.push(temp);
+	}
+	cin >> k;
+    for (int i = 0; i < k; i++){
+        int x = q.front();
+        q.pop();
+        q.push(x);
+    }
+    while (!q.empty()){
+        cout << q.front() << " ";
+        q.pop();
+    }
+    
+    return 0;
+}
